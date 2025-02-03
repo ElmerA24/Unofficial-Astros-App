@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct AstrosBaseball2App: App {
+struct AstrosBaseballStats: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RosterView()
         }
     }
 }

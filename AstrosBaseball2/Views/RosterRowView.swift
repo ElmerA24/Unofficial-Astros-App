@@ -15,7 +15,6 @@ struct RosterRowView: View
     {
         HStack(spacing: 0)
         {
-
             leftColumn
             centerColumn
             rightColumn
@@ -34,7 +33,7 @@ extension RosterRowView
 {
     private var leftColumn: some View
     {
-        HStack(spacing: 0)
+        HStack(spacing: 4)
         {
                 Text(player.jerseyNumber)
                     .font(.title)
@@ -45,8 +44,6 @@ extension RosterRowView
                     .resizable()
                     .frame(width: 65, height: 65)
                     .foregroundColor(Color(.systemGray4))
-            
-            
         }
         .frame(width: 120 ,alignment: .leading)
     }
@@ -60,9 +57,7 @@ extension RosterRowView
                 .fontWeight(.semibold)
             
         }
-        .frame(maxWidth: .infinity ,alignment: .leading)
-           
-           
+        .frame(maxWidth: .infinity ,alignment: .leading)    
     }
     
     private var rightColumn: some View

@@ -14,25 +14,30 @@ struct RosterView: View
     
     var body: some View
     {
-        VStack
+        NavigationStack
         {
-            columnTitles
-                .foregroundColor(.secondary)
-            if let roster = vm.roster
+            VStack
             {
-                List(roster.roster, id: \.person.id) { player in
+                columnTitles
+                    .foregroundColor(.secondary)
+                if let roster = vm.roster
+                {
+                    List(roster.roster, id: \.person.id) { player in
 
-                    RosterRowView(player: player)
-                        .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                        RosterRowView(player: player)
+                            .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                        
+                       
+                    }
                     
-                   
+                    .listStyle(.plain)
                 }
-                
-                .listStyle(.plain)
+                Spacer(minLength: 0)
             }
-            Spacer(minLength: 0)
+            .padding(.horizontal)
+            .navigationTitle("Roster")
+            
         }
-        .padding(.horizontal)
         
         
     }

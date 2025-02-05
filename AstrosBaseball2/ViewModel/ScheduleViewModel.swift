@@ -1,5 +1,5 @@
 //
-//  RosterViewModel.swift
+//  ScheduleViewModel.swift
 //  AstrosBaseball2
 //
 //  Created by Elmer Arce on 2/3/25.
@@ -7,34 +7,30 @@
 
 import Foundation
 
-class RosterViewModel: ObservableObject
+class ScheduleViewModel: ObservableObject
 {
-    @Published var roster: Roster?
+    @Published var schedule: Schedule?
     @Published var errorMessage: String?
     
     private let service = Service()
     
     init()
     {
-        Task { await fetchRoster()}
-       
+        Task { await fetchSchedule() }
     }
     
     @MainActor
-    func fetchRoster() async
+    func fetchSchedule() async
     {
-        do {
-            let fetchedRoster = try await service.fetchRoster()
-            self.roster = fetchedRoster
-            
-        }catch
+        do
+        {
+            let fetchedSchedule = try await service.fetchSchedule()
+            self.schedule = fetchedSchedule
+        }
+        catch
         {
             guard let error = error as? APIError else {return}
             self.errorMessage = error.customDescription
-            
-            
         }
     }
-    
-
 }

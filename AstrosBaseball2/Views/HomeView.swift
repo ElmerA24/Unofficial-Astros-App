@@ -13,31 +13,30 @@ struct HomeView: View
     
     var body: some View
     {
-        ScrollView
+        NavigationStack
         {
-            VStack(spacing: 0)
+            ScrollView
             {
-                imageSection
-                seasonTicketsSection
-                gearSection //update photo to gear photo. maybe put a geometry reader?
-
-
+                VStack(spacing: 0)
+                {
+                    imageSection
+                    seasonTicketsSection
+                    gearSection //update photo to gear photo. maybe put a geometry reader?
+                    rosterSection
+                }
+            }
+           .ignoresSafeArea(edges: .top)
             }
         }
-        .ignoresSafeArea()
-            
-        
+    
     }
-}
 
 #Preview {
     HomeView()
 }
-//https://www.mlb.com/astros/tickets/season-tickets  make a photo a link to take you to website
-
 extension HomeView
 {
-    
+    //MARK: - Image Section
     private var imageSection: some View
     {
         TabView
@@ -47,6 +46,7 @@ extension HomeView
                     .scaledToFill()
                     .frame(width: UIScreen.main.bounds.width)
                     .clipped()
+                    
                 
                 Image("season-tickets")
                     .resizable()
@@ -59,6 +59,7 @@ extension HomeView
             .tabViewStyle(PageTabViewStyle())
     }
     
+    //MARK: - Season Tickets Section
     private var seasonTicketsSection: some View
     {
         VStack(spacing: 0)
@@ -72,7 +73,7 @@ extension HomeView
                         Link(destination: url) {
                             
                             Text("Buy Tickets Now!")
-                            Image(systemName: "chevron.right")
+                            Image(systemName: "ticket.fill")
                             Spacer()
                         }
                         .padding(.horizontal,3)
@@ -95,11 +96,12 @@ extension HomeView
         }
     }
     
+    //MARK: - Gear Section
     private var gearSection: some View
     {
         VStack
         {
-            if let url = URL(string: vm.seasonTicketsurl)
+            if let url = URL(string: vm.astrosGearurl)
             {
                 ZStack
                 {
@@ -108,7 +110,7 @@ extension HomeView
                         Link(destination: url) {
                             
                             Text("Buy your Gear Now!")
-                            Image(systemName: "chevron.right")
+                            Image(systemName: "tshirt.fill")
                             Spacer()
                         }
                         .padding(.horizontal,3)
@@ -128,6 +130,30 @@ extension HomeView
                 
             
             }
+        }
+    }
+    
+    //MARK: - Roster Section
+    private var rosterSection: some View
+    {
+        VStack
+        {
+            HStack
+            {
+                Text("Meet Your 2025 Houston Astros!")
+                Spacer()
+                
+            }
+            .frame(maxWidth: .infinity)
+            .frame(height: 40)
+            .padding(.horizontal,3)
+            .font(.title2)
+            .fontWeight(.bold)
+            .background(.orange)
+            .foregroundColor(.white)
+            
+            
+            RosterScrollView()
         }
     }
 }

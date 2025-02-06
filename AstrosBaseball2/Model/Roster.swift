@@ -40,7 +40,7 @@ struct Rosters: Codable {
 }
 
 // MARK: - Person
-struct Person: Codable {
+struct Person: Codable,Hashable {
     let id: Int
     let fullName, link: String
 }

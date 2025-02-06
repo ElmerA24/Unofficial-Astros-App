@@ -13,18 +13,20 @@ struct ScheduleView: View
     @StateObject var vm = ScheduleViewModel()
     var body: some View
     {
-        NavigationStack {
-            List {
+        NavigationStack
+        {
+            List
+            {
                 if let schedule = vm.schedule
                 {
-                                        ForEach(schedule.dates, id: \.date) { dateElement in
-                                            Section(header: Text(dateElement.date))
-                                            {
-                                                ForEach(dateElement.games, id: \.gameDate) { game in
-                                                    ExtractedView(game: game)
-                                                }
-                                            }
-                                        }
+                    ForEach(schedule.dates, id: \.date) { dateElement in
+                        Section(header: Text(dateElement.date))
+                        {
+                            ForEach(dateElement.games, id: \.gameDate) { game in
+                                ExtractedView(game: game)
+                            }
+                        }
+                    }
                 }
             }
             .navigationTitle("Season Schedule")

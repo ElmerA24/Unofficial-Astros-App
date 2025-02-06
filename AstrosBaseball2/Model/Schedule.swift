@@ -52,25 +52,12 @@ struct Venue: Codable {
     let name: String
 }
 
-func convertToCentralTime(utcString: String) -> String {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-    formatter.timeZone = TimeZone(abbreviation: "UTC")
-
-    if let date = formatter.date(from: utcString) {
-        formatter.timeZone = TimeZone(identifier: "America/Chicago") // Central Time
-        formatter.dateFormat = "MMM d, yyyy h:mm a z" // Example: Mar 27, 2025 3:10 PM CDT
-        return formatter.string(from: date)
-    }
-    return "Invalid Date"
-}
-
-
 let mockSchedule = Schedule(totalGames: 162,
                             dates: [DateElement(date: "03-27-2025",
                                                 games: [Game(season: "2025", gameDate: "27-03-2025", officialDate: "03-28-2025", teams: Teams(away: TeamInfo(team: Team(id: 121, name: "New York Mets")), home: TeamInfo(team: Team(id: 117, name: "Houston Astros"))),
                                                              venue: Venue(id: 2392, name: "Daikin Park"))])])
 
+//JSON
 /*
  "totalItems": 162,
   "totalEvents": 0,

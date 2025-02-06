@@ -19,7 +19,10 @@ struct RosterRowView: View
             centerColumn
             rightColumn
         }
+        //.background(Color.theme.background) // Apply background here
         .frame(maxWidth: .infinity, alignment: .leading)
+        .foregroundColor(Color.theme.letters)
+       
         
     }
 }
@@ -27,6 +30,7 @@ struct RosterRowView: View
 #Preview {
    
     RosterRowView(player: mockPlayer )
+    
 }
 
 extension RosterRowView
@@ -40,12 +44,14 @@ extension RosterRowView
                     .fontWeight(.bold)
                     .frame(width: 40, alignment: .leading)
          
-                Image(systemName: "person.circle.fill")
-                    .resizable()
-                    .frame(width: 65, height: 65)
-                    .foregroundColor(Color(.systemGray4))
+//                Image(systemName: "person.circle.fill")
+//                    .resizable()
+//                    .frame(width: 65, height: 65)
+//                    .foregroundColor(Color(.systemGray4))
         }
+        
         .frame(width: 120 ,alignment: .leading)
+        
     }
     
 

@@ -9,7 +9,9 @@ import SwiftUI
 
 struct HomeView: View
 {
-    @StateObject private var vm = HomeViewModel()
+    @StateObject var vm = HomeViewModel()
+    
+   
     
     var body: some View
     {
@@ -20,10 +22,13 @@ struct HomeView: View
                 VStack(spacing: 0)
                 {
                     imageSection
+                    rosterSection
                     seasonTicketsSection
                     gearSection //update photo to gear photo. maybe put a geometry reader?
-                    rosterSection
+                    
+                    
                 }
+                .background(Color.theme.background)
             }
            .ignoresSafeArea(edges: .top)
             }
@@ -121,12 +126,14 @@ extension HomeView
                         .background(.orange)
                         .foregroundColor(.white)
                         
-                        Image("season-tickets 1")
+                        Image("gear")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: UIScreen.main.bounds.width)
+                                //.frame(width: UIScreen.main.bounds.width)
                     }
+                    
                 }
+                
                 
             
             }

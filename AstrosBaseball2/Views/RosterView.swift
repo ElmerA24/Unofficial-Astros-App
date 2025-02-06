@@ -26,41 +26,28 @@ struct RosterView: View
 
                         RosterRowView(player: player)
                             .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                            .listRowBackground(Color.clear)
+                            
                         
                        
                     }
-                    
                     .listStyle(.plain)
+
                 }
+                
                 Spacer(minLength: 0)
-            }
+            }//end of VStack
+            
             .padding(.horizontal)
             .navigationTitle("Roster")
+            .background(Color.theme.background)
+          
             
         }
-        
+       
         
     }
 }
-
-//"person": {
-//        "id": 656986,
-//        "fullName": "Bennett Sousa",
-//        "link": "/api/v1/people/656986"
-//      },
-//      "jerseyNumber": "62",
-//      "position": {
-//        "code": "1",
-//        "name": "Pitcher",
-//        "type": "Pitcher",
-//        "abbreviation": "P"
-//      },
-//      "status": {
-//        "code": "A",
-//        "description": "Active"
-//      },
-//      "parentTeamId": 117
-
 
 #Preview {
     RosterView()
@@ -82,7 +69,6 @@ extension RosterView
              
             
         }
-        
         .font(.caption)
         .padding(.horizontal)
     }

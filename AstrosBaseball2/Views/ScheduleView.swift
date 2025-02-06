@@ -20,18 +20,24 @@ struct ScheduleView: View
                 if let schedule = vm.schedule
                 {
                     ForEach(schedule.dates, id: \.date) { dateElement in
-                        Section(header: Text(dateElement.date))
+                        Section(header: Text(dateElement.date).bold())
                         {
                             ForEach(dateElement.games, id: \.gameDate) { game in
                                 ExtractedView(game: game)
                             }
                         }
+                        
+                        .listRowBackground(Color.theme.letters)
                     }
                 }
             }
+            .background(Color.theme.background)
+            .scrollContentBackground(.hidden) // Hide default List background
+            
             .navigationTitle("Season Schedule")
            // .navigationBarTitleDisplayMode(.inline)
-        }
+        }.background(Color.theme.background)
+        
        
     }
 }
@@ -40,21 +46,25 @@ struct ScheduleView: View
     ScheduleView()
 }
 
-struct ExtractedView: View {
+struct ExtractedView: View
+{
     let game: Game
     
-    var body: some View {
+    var body: some View
+    {
         VStack(alignment: .leading)
         {
 
-            Text("\(game.teams.home.team.name) vs \(game.teams.away.team.name)")
-                .font(.headline)
+            Text("\(game.teams.away.team.name) @ \(game.teams.home.team.name)")
+                .font(.title3)
             Text("Location: \(game.venue.name)")
-                .font(.subheadline)
+                .font(.headline)
             Text("Time: \(game.gameDate)")
-                .font(.caption)
-                .foregroundColor(.gray)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
             
         }
+        
+        
     }
 }

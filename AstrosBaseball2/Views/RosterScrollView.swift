@@ -11,14 +11,13 @@ struct RosterScrollView: View
 {
     
     @ObservedObject var viewModel = RosterViewModel()
-    @ScaledMetric var trainCarSpace = 5
     var body: some View
     {
         NavigationStack
         {
             ScrollView(.horizontal)
             {
-                HStack(spacing: trainCarSpace)
+                HStack
                 {
                     if let roster = viewModel.roster
                     {
@@ -33,12 +32,13 @@ struct RosterScrollView: View
                     }
                     
                 }
-                .foregroundColor(.orange)
-                
+                //.background(Color.theme.background)
+                .foregroundColor(Color.theme.letters)
                 
             }
             .navigationDestination(for: People.self) { player in
                 ProfileView(profile: player)
+            
                 
             }
             

@@ -9,7 +9,10 @@ import SwiftUI
 
 struct Content: View
 {
-    
+    init()
+    {
+        UITabBar.appearance().backgroundColor = UIColor(named: "Background")
+    }
     var body: some View
     {
         TabView
@@ -18,8 +21,10 @@ struct Content: View
             HomeView()
                 .tabItem {
                     Image(systemName: "house.fill")
+                        .background(Color.theme.letters)
                     Text("Home")
                 }
+               
             
             RosterView()
                 .tabItem {
@@ -34,6 +39,13 @@ struct Content: View
                 }
             
         }
+        .tint(.blue)
+        .onAppear {
+            UITabBar.appearance().unselectedItemTintColor = UIColor(named: "Letter")
+        }
+
+       
+        
     }
 }
 

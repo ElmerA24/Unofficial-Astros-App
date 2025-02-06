@@ -12,6 +12,7 @@ struct AstrosBaseballStats: App {
     var body: some Scene {
         WindowGroup {
             Content()
+                .preferredColorScheme(.dark)
         }
     }
 }

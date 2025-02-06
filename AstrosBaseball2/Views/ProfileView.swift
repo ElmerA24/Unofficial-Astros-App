@@ -13,8 +13,17 @@ struct ProfileView: View
     
     var body: some View
     {
-        imageSection
-        profileSection
+
+        VStack
+        {
+            imageSection
+            profileSection
+        }
+        .background(Color.theme.background)
+            
+            
+        
+        
     }
 }
 
@@ -36,8 +45,11 @@ extension ProfileView
             Text(profile.fullName)
                 .font(.title)
                 .fontWeight(.bold)
+                .foregroundColor(Color.theme.letters)
             
         }
+        
+        
     }
     
     private var profileSection: some View
@@ -56,7 +68,14 @@ extension ProfileView
                 Text("Weight: \(profile.weight)")
                 Text("Gender: \(profile.gender)")
             }
+            .foregroundColor(Color.theme.letters)
+           // .listRowBackground(Color(.systemGray6))
+            
+            
         }
+        .scrollContentBackground(.hidden)
+        .background(Color.theme.background)
+      
         
     }
 }

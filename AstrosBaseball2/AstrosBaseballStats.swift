@@ -9,10 +9,26 @@ import SwiftUI
 
 @main
 struct AstrosBaseballStats: App {
+    @State private var showLaunchView = true
     var body: some Scene {
         WindowGroup {
-            Content()
-                .preferredColorScheme(.dark)
+            
+            ZStack
+            {
+                Content()
+                
+                ZStack
+                {
+                    if showLaunchView
+                    {
+                        LaunchView(showLaunchView: $showLaunchView)
+                            .transition(.move(edge: .leading))
+                    }
+                }
+                .zIndex(2.0)
+            }
+            
+                
         }
     }
 }

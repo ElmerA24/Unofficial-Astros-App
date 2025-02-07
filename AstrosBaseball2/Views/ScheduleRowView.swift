@@ -14,7 +14,7 @@ struct ScheduleRowView: View
     {
         VStack(alignment: .leading)
         {
-            Text("\(game.teams.home.team.name) @ \(game.teams.away.team.name)")
+            Text("\(game.teams.away.team.name) @ \(game.teams.home.team.name)")
                 .font(.title2)
                 .fontWeight(.bold)
             Text("Location: \(game.venue.name)")

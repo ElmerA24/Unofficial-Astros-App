@@ -20,12 +20,15 @@ struct ScheduleView: View
                 if let schedule = vm.schedule
                 {
                     ForEach(schedule.dates, id: \.date) { dateElement in
-                        Section(header: Text(dateElement.date).bold())
+                        Section
                         {
                             ForEach(dateElement.games, id: \.gameDate) { game in
-                                ExtractedView(game: game)
+//                                gameRowView(game: game)
+                                ScheduleRowView(game: game)
+                                
                             }
                         }
+                        
                         
                         .listRowBackground(Color.theme.letters)
                     }
@@ -46,25 +49,3 @@ struct ScheduleView: View
     ScheduleView()
 }
 
-struct ExtractedView: View
-{
-    let game: Game
-    
-    var body: some View
-    {
-        VStack(alignment: .leading)
-        {
-
-            Text("\(game.teams.away.team.name) @ \(game.teams.home.team.name)")
-                .font(.title3)
-            Text("Location: \(game.venue.name)")
-                .font(.headline)
-            Text("Time: \(game.gameDate)")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-            
-        }
-        
-        
-    }
-}

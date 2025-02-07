@@ -52,10 +52,26 @@ struct Venue: Codable {
     let name: String
 }
 
-let mockSchedule = Schedule(totalGames: 162,
-                            dates: [DateElement(date: "03-27-2025",
-                                                games: [Game(season: "2025", gameDate: "27-03-2025", officialDate: "03-28-2025", teams: Teams(away: TeamInfo(team: Team(id: 121, name: "New York Mets")), home: TeamInfo(team: Team(id: 117, name: "Houston Astros"))),
-                                                             venue: Venue(id: 2392, name: "Daikin Park"))])])
+func timeFormat(date: String) -> String?
+{
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+    dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+
+    guard let utcDate = dateFormatter.date(from: date) else { return nil }
+
+    dateFormatter.dateFormat = "EEEE, MMMM d, yyyy 'at' h:mm a 'CT'"
+    dateFormatter.timeZone = TimeZone(abbreviation: "CST") // Central Time
+
+    return dateFormatter.string(from: utcDate)
+}
+
+//let mockSchedule = Schedule(totalGames: 162,
+//                            dates: [DateElement(date: "03-27-2025",
+//                                                games: [Game(season: "2025", gameDate: "7:00pm CT", officialDate: "03-28-2025", teams: Teams(away: TeamInfo(team: Team(id: 121, name: "New York Mets")), home: TeamInfo(team: Team(id: 117, name: "Houston Astros"))),
+//                                                             venue: Venue(id: 2392, name: "Daikin Park"))])])
+let mockSchedule = Game(season: "2025", gameDate: "7:00pm", officialDate: "03-25-2025", teams: Teams(away: TeamInfo(team: Team(id: 117, name: "Houston Astros")),
+                                                                                                     home: TeamInfo(team: Team(id: 118, name: "Los Angeles Dodgers"))), venue: Venue(id: 200, name: "Daikin Park"))
 
 //JSON
 /*

@@ -44,10 +44,12 @@ extension RosterRowView
                     .fontWeight(.bold)
                     .frame(width: 40, alignment: .leading)
          
-//                Image(systemName: "person.circle.fill")
-//                    .resizable()
-//                    .frame(width: 65, height: 65)
-//                    .foregroundColor(Color(.systemGray4))
+                Image("jose-altuve1")
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(Circle())
+                    .frame(width: 65, height: 65)
+                    .foregroundColor(Color(.systemGray4))
         }
         
         .frame(width: 120 ,alignment: .leading)

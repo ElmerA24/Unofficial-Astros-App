@@ -15,10 +15,11 @@ struct PlayerRowView: View
     {
         VStack(spacing: 6)
         {
-            Image(systemName: "person.circle.fill")
+            Image("lewis-hamilton")
                 .resizable()
                 .frame(width: 65, height: 65)
-                .foregroundColor(Color(.systemGray4))
+                .clipShape(Circle())
+               // .foregroundColor(Color(.systemGray4))
             Text(player.person.fullName)
         }
         .padding(.horizontal)

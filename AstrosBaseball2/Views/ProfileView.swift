@@ -38,10 +38,12 @@ extension ProfileView
     {
         VStack
         {
-            Image(systemName: "person.circle.fill")
+            Image("lewis-hamilton")
                 .resizable()
                 .frame(width: 180,height: 180)
-                .foregroundColor(Color(.systemGray4))
+                .scaledToFit()
+                .clipShape(Circle())
+                //.foregroundColor(Color(.systemGray4))
             Text(profile.fullName)
                 .font(.title)
                 .fontWeight(.bold)

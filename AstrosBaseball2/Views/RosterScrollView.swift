@@ -15,7 +15,7 @@ struct RosterScrollView: View
     {
         NavigationStack
         {
-            ScrollView(.horizontal)
+            ScrollView(.horizontal,showsIndicators: false)
             {
                 HStack
                 {
